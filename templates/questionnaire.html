@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Medical Expert System - Questionnaire</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		h1 {
+			font-size: 36px;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
+
+		label {
+			font-size: 20px;
+			margin-right: 10px;
+		}
+
+		input[type="submit"] {
+            margin-top: 2rem;
+			font-size: 20px;
+			padding: 10px 20px;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<h1>Medical Questionnaire</h1>
+	<p>Please answer the following questions to receive a possible diagnosis and cure.</p>
+	<form method="POST" action="/results">
+		{% for key, value in questions.items() %}
+			<p>{{ value }}</p>
+			<input type="radio" id="{{ key }}_yes" name="{{ key }}" value="1">
+			<label for="{{ key }}_yes">Yes</label>
+			<input type="radio" id="{{ key }}_no" name="{{ key }}" value="0">
+			<label for="{{ key }}_no">No</label>
+		{% endfor %}
+		<br>
+            <input type="submit" value="Submit">
+	</form>
+</body>
+</html>
